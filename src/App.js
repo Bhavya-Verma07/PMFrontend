@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React from "react";
+// import "./App.css";
+import { Routes, Route,  useLocation } from "react-router-dom";
+import ButtonAppBar from "./Components/navbar";
+import Register from "./Components/Register/register";
+import Login from "./Components/Login/loginpage";
+import Error from "./Components/Error";
+import Home from "./Components/Home/home";
+import Play from "./Components/Play";
+// import { Switch } from "@mui/material";
 
 function App() {
+  const location = useLocation();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ButtonAppBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Register" element={<Register />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Startgame" element={<Play />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
+    </>
   );
 }
 
